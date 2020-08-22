@@ -24,8 +24,8 @@ BREAKING CHANGES since [version 0.3.0](https://github.com/wemake-services/caddy-
 
 Options to configure:
 
-- `virtual.host` domain name, don't pass `http://` or `https://`, you can separate them with space,
-- `virtual.alias` domain alias, e.q. `www` prefix,
+- `virtual.host` domain name, don't pass `http://` or `https://`. Multiple domains can be specified by separeating them with a space,
+- `virtual.alias` domain alias, e.q. `www` prefix (this option is not compatible with specifiying multiple domains in the `virtual.host` label,
 - `virtual.port` port exposed by container, e.g. `3000` for React apps in development,
 - `virtual.tls-email` the email address to use for the ACME account managing the site's certificates,
 - `virtual.auth.username` and
@@ -87,8 +87,8 @@ Then, every container represents a single `upstream` to serve requests.
 
 There are several options to configure:
 
-- `virtual.host` is basically a domain name, see [`Caddy` docs](https://caddyserver.com/docs/proxy)
-- `virtual.alias` (optional) domain alias, useful for `www` prefix with redirect. For example `www.myapp.com`. Alias will always redirect to the host above.
+- `virtual.host` is basically a domain name or a list of domain names, see [`Caddy` docs](https://caddyserver.com/docs/proxy)
+- `virtual.alias` (optional) domain alias, useful for `www` prefix with redirect. For example `www.myapp.com`. Alias will always redirect to the host above. Not compatible with specifying multiple domains.
 - `virtual.port` exposed port of the container
 - `virtual.tls-email` could be empty, unset or set to [valid email](https://caddyserver.com/docs/caddyfile/directives/tls)
 - `virtual.tls` (alias of `virtual.tls-email`) could be empty, unset or set to a [valid set of tls directive value(s)](https://caddyserver.com/docs/caddyfile/directives/tls)
